@@ -22,7 +22,7 @@ def criar_usuario():
 @usuario_bp.route('/usuarios', methods=['GET'])
 def listar_usuarios():
     usuarios = Usuario.query.all()
-    return jsonify([{'id': u.usuario_id, 'login': u.usuario_login} for u in usuarios]), 200
+    return jsonify([{'id': u.usuario_id, 'login': u.usuario_login, 'senha': u.usuario_senha} for u in usuarios]), 200
 
 # Rota para atualizar um usuário existente (PUT)
 @usuario_bp.route('/usuarios/<int:id>', methods=['PUT'])
@@ -40,7 +40,7 @@ def atualizar_usuario(id):
     usuario.usuario_senha = data['senha']
     db.session.commit()
 
-    return jsonify({'id': usuario.usuario_id, 'login': usuario.usuario_login}), 200
+    return jsonify({'id': usuario.usuario_id, 'login': usuario.usuario_login, 'senha': usuario.usuario_senha}), 200
 
 # Rota para deletar um usuário existente (DELETE)
 @usuario_bp.route('/usuarios/<int:id>', methods=['DELETE'])

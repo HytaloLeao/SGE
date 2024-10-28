@@ -18,6 +18,7 @@ def criar_produto():
 
     return jsonify({'id': novo_produto.produto_id, 'nome': novo_produto.produto_nome, 'preco': str(novo_produto.produto_preco)}), 201
 
+
 # Rota para listar todos os produtos (GET)
 @produto_bp.route('/produtos', methods=['GET'])
 def listar_produtos():
